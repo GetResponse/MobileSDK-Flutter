@@ -2,6 +2,9 @@
 
 ## Installation
 
+Full developers guide available on:
+https://www.getresponse.com/help/mobile-apps-technical-documentation-for-flutter.html
+
 Add the following to your `pubspec.yaml` file:
     
 ```yaml
@@ -83,9 +86,6 @@ void main() async {
     Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         initGetResponse();
         final notificationHandler = await GetResponsePushNotificationService().handleIncomingNotification(message.data, EventType.showed);
-        if (Platform.isAndroid) {
-            //show local notification for android
-        }
     }
     ```
 
