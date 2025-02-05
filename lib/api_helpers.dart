@@ -18,8 +18,6 @@ class APIHelpers {
     return _instance;
   }
 
-  final client = HttpClient();
-
   String createJWTToken({required String secret, required String applicationId, required String installationUUID}) {
     final now = DateTime.now();
     final iat = now.subtract(const Duration(seconds: 2)).toIso8601String();
@@ -37,6 +35,7 @@ class APIHelpers {
 
   Future<void> _baseApiCall(
       {required HttpMethod httpMethod, required String apiEndpoint, Map<String, String?>? jsonData, required String token}) async {
+    final client = HttpClient();
     HttpClientRequest request;
     switch (httpMethod) {
       case HttpMethod.get:
